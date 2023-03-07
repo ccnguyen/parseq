@@ -120,8 +120,13 @@ class BaseSystem(pl.LightningModule, ABC):
         for pred, prob, gt in zip(preds, probs, labels):
             confidence += prob.prod().item()
             pred = self.charset_adapter(pred)
+
+            print(f'prediction: {pred}, gt: {gt}')
             # Follow ICDAR 2019 definition of N.E.D.
-            ned += edit_distance(pred, gt) / max(len(pred), len(gt))
+
+            ned_1 = edit_distance(pred, gt) / max(len(pred), len(gt))
+            # print(f'NED: {ned_1}')
+            ned += ned_1
             if pred == gt:
                 correct += 1
             total += 1

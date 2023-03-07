@@ -91,9 +91,7 @@ def main():
     datamodule = SceneTextDataModule(args.data_root, '_unused_', hp.img_size, hp.max_label_length, hp.charset_train,
                                      hp.charset_test, args.batch_size, args.num_workers, False, rotation=args.rotation)
 
-    test_set = SceneTextDataModule.TEST_BENCHMARK_SUB + SceneTextDataModule.TEST_BENCHMARK
-    if args.new:
-        test_set += SceneTextDataModule.TEST_NEW
+    test_set = SceneTextDataModule.TEST_BENCHMARK
     test_set = sorted(set(test_set))
 
     results = {}
@@ -119,11 +117,8 @@ def main():
         results[name] = Result(name, total, accuracy, mean_ned, mean_conf, mean_label_length)
 
     result_groups = {
-        'Benchmark (Subset)': SceneTextDataModule.TEST_BENCHMARK_SUB,
         'Benchmark': SceneTextDataModule.TEST_BENCHMARK
     }
-    if args.new:
-        result_groups.update({'New': SceneTextDataModule.TEST_NEW})
     with open(args.checkpoint + '.log.txt', 'w') as f:
         for out in [f, sys.stdout]:
             for group, subset in result_groups.items():
