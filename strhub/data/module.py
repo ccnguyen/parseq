@@ -26,7 +26,6 @@ from .dataset import build_tree_dataset, LmdbDataset
 class SceneTextDataModule(pl.LightningDataModule):
     TEST_BENCHMARK_SUB = ('IIIT5k', 'SVT', 'IC13_857', 'IC15_1811', 'SVTP', 'CUTE80')
     # TEST_BENCHMARK = ('IIIT5k', 'SVT', 'IC13_1015', 'IC15_2077', 'SVTP', 'CUTE80')
-    TEST_BENCHMARK = ('IIIT5k', 'SVT', 'IC13_1015', 'SVTP')
     TEST_BENCHMARK = ( 'IIIT5k',)
 
 

@@ -2,16 +2,16 @@
 """ a modified version of CRNN torch repository https://github.com/bgshih/crnn/blob/master/tool/create_dataset.py """
 # todo: change eval_step in strhub > models > base.py
 
+import argparse
 import io
 import os
-import argparse
+import string
 
 import lmdb
-from PIL import Image
-import string
-from strhub.data.dataset import LmdbDataset
 import numpy as np
+from PIL import Image
 
+from strhub.data.dataset import LmdbDataset
 
 
 def checkImageIsValid(imageBin):

@@ -1,20 +1,16 @@
 #!/usr/bin/env python3
 """ a modified version of CRNN torch repository https://github.com/bgshih/crnn/blob/master/tool/create_dataset.py """
+import argparse
 import io
 import os
-import argparse
+import string
 
-import fire
+import cv2
 import lmdb
 import numpy as np
 from PIL import Image
-import string
-import matplotlib.pyplot as plt
-from strhub.data.dataset import LmdbDataset
-import numpy as np
-import cv2
-import skimage.io
 
+from strhub.data.dataset import LmdbDataset
 
 
 def checkImageIsValid(imageBin):
